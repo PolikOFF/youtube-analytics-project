@@ -60,3 +60,27 @@ class Channel:
         info_channel_dict['view_count'] = self.view_count
         with open(filename, 'w') as f:
             json.dump(info_channel_dict, f)
+
+    def __str__(self):
+        return self.title + self.url
+
+    def __add__(self, other):
+        return int(self.video_count) + int(other.video_count)
+
+    def __sub__(self, other):
+        return int(self.video_count) - int(other.video_count)
+
+    def __gt__(self, other):
+        return int(self.video_count) > int(other.video_count)
+
+    def __ge__(self, other):
+        return int(self.video_count) >= int(other.video_count)
+
+    def __lt__(self, other):
+        return int(self.video_count) < int(other.video_count)
+
+    def __le__(self, other):
+        return int(self.video_count) <= int(other.video_count)
+
+    def __eq__(self, other):
+        return int(self.video_count) == int(other.video_count)
