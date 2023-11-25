@@ -3,12 +3,10 @@ from googleapiclient.discovery import build
 import json
 
 
-
 class YouTubeChannelInfo:
     """Класс для обращения к YouTube"""
     api_key: str = os.getenv('API_KEY_YOUTUBE')
     youtube = build('youtube', 'v3', developerKey = api_key)
-
 
     @classmethod
     def get_channel_info(cls, channel_id):
@@ -19,7 +17,6 @@ class YouTubeChannelInfo:
 
 class Channel:
     """Класс для ютуб - канала"""
-
 
     def __init__(self, channel_id):
         """
@@ -35,17 +32,14 @@ class Channel:
         self.video_count = self.info['items'][0]['statistics']['videoCount']
         self.view_count = self.info['items'][0]['statistics']['viewCount']
 
-
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         print(self.info)
-
 
     @classmethod
     def get_service(cls):
         """Класс-метод возвращает объект для работы с YouTube API"""
         return YouTubeChannelInfo.youtube
-
 
     def to_json(self, filename):
         """
